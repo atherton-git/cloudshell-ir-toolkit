@@ -19,10 +19,6 @@ def process_evtx_files():
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
-def process_all_inputs():
-    # Add code to process all inputs here
-    print("Processing all inputs...")
-
 def parse_linux_log_timestamps():
     # Run the parse_linux_datetime.py script in the same directory
     script_path = os.path.join(os.path.dirname(__file__), "parse_linux_datetime.py")
@@ -33,6 +29,11 @@ def parse_linux_log_timestamps():
         print(f"Command failed with error code {e.returncode}: {e.stderr}")
     except Exception as e:
         print(f"An error occurred: {str(e)}")
+
+def process_all_inputs():
+    print("Processing all inputs...")
+    process_evtx_files()
+    parse_linux_log_timestamps()
 
 def main():
     while True:
