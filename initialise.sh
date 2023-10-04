@@ -3,14 +3,6 @@
 # Define the cloud drive directory
 cloud_drive="/usr/csuser/clouddrive"
 
-# Clone the IR Toolkit Repository
-if git clone https://github.com/atherton-git/incident-response-toolkit.git "$cloud_drive"; then
-    echo "IR Toolkit repository cloned successfully."
-else
-    echo "Failed to clone IR Toolkit repository."
-    exit 1
-fi
-
 # Download and unzip EvtxECmd
 evtx_url="https://f001.backblazeb2.com/file/EricZimmermanTools/net6/EvtxECmd.zip"
 if curl -o "$cloud_drive/log-parse-toolkit/tmp/EvtxECmd.zip" "$evtx_url" && unzip "$cloud_drive/log-parse-toolkit/tmp/EvtxECmd.zip" -d "$cloud_drive/log-parse-toolkit/tmp/EvtxECmd/"; then
