@@ -16,7 +16,7 @@ def process_image(image_path):
         print()
 
 # Directory path containing the QR code images
-directory_path = "/home/jack/clouddrive/test"
+directory_path = "./_input/qrcodes/"
 
 # List of allowed file extensions
 allowed_extensions = [".png", ".jpg", ".jpeg"]  # Add more extensions if needed
