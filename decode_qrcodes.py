@@ -8,12 +8,11 @@ def process_image(image_path):
     image = pb.load_single_band(image_path, np.uint8)
     detector.detect(image)
 
-    print("Detected a total of {} QR Codes in {}".format(len(detector.detections), image_path))
+    print("Detected a total of {} QR Codes in {}:".format(len(detector.detections), image_path))
     
     for qr in detector.detections:
-        print("Message: " + qr.message)
-        print("     at: " + str(qr.bounds))
-        print()
+        print(qr.message)
+      # print("     at: " + str(qr.bounds))
 
 # Directory path containing the QR code images
 directory_path = "./_input/qrcodes/"
