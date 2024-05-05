@@ -60,5 +60,6 @@ tar -xzvf "$toolkit_dir/tmp/dotnet-runtime-6.0.0-linux-x64.tar.gz" -C "$toolkit_
 yes | pip install pandas
 yes | pip install pyboof
 yes | pip install numpy
+yes | pip install pyarrow
 
 echo "Setup has completed."
