@@ -1,7 +1,11 @@
 import subprocess
 import os
 
+# Currently unused variable
 clouddrive_dir = "/usr/csuser/clouddrive"
+
+# Change the current working directory
+os.chdir('scripts')
 
 def run_command(command, success_message):
     try:
