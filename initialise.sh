@@ -47,7 +47,7 @@ curl -o "$toolkit_dir/tmp/bstrings.zip" "https://f001.backblazeb2.com/file/EricZ
 bstrings_expected_hash="1521031bab2843757bb701b75741a24154965ba219a57cbfefddb792c6d5b301"
 check_hash "$toolkit_dir/tmp/bstrings.zip" "$bstrings_expected_hash"
 unzip "$toolkit_dir/tmp/bstrings.zip" -d "$toolkit_dir/tmp/bstrings/"
-mv "$toolkit_dir/tmp/bstrings/bstrings/"* "$toolkit_dir/bin/bstrings/"
+mv "$toolkit_dir/tmp/bstrings/"* "$toolkit_dir/bin/bstrings/"
 rm -r "$toolkit_dir/tmp/bstrings/"
 
 # Download dotnet runtime
