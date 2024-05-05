@@ -34,17 +34,21 @@ check_hash() {
     fi
 }
 
-# Download EvtxECmd.zip
+# EvtxECmd Installation
 curl -o "$toolkit_dir/tmp/EvtxECmd.zip" "https://f001.backblazeb2.com/file/EricZimmermanTools/net6/EvtxECmd.zip"
-
-# Check the integrity of EvtxECmd.zip
 evtxecmd_expected_hash="e1b4a5f9b09eca3c057cdc2d0ed1a28fe0c24dc90f9f68b7e0572e373dce86a6"
 check_hash "$toolkit_dir/tmp/EvtxECmd.zip" "$evtxecmd_expected_hash"
-
-# Extract EvtxECmd.zip
 unzip "$toolkit_dir/tmp/EvtxECmd.zip" -d "$toolkit_dir/tmp/EvtxECmd/"
 mv "$toolkit_dir/tmp/EvtxECmd/EvtxECmd/"* "$toolkit_dir/bin/evtx_explorer/"
 rm -r "$toolkit_dir/tmp/EvtxECmd/"
+
+# bstrings Installation
+curl -o "$toolkit_dir/tmp/bstrings.zip" "https://f001.backblazeb2.com/file/EricZimmermanTools/net6/bstrings.zip"
+bstrings_expected_hash="1521031bab2843757bb701b75741a24154965ba219a57cbfefddb792c6d5b301"
+check_hash "$toolkit_dir/tmp/bstrings.zip" "$bstrings_expected_hash"
+unzip "$toolkit_dir/tmp/bstrings.zip" -d "$toolkit_dir/tmp/bstrings/"
+mv "$toolkit_dir/tmp/bstrings/bstrings/"* "$toolkit_dir/bin/bstrings/"
+rm -r "$toolkit_dir/tmp/bstrings/"
 
 # Download dotnet runtime
 curl -o "$toolkit_dir/tmp/dotnet-runtime-6.0.0-linux-x64.tar.gz" "https://download.visualstudio.microsoft.com/download/pr/0ce1c34f-0d9e-4d9b-964e-da676c8e605a/7a6c353b36477fa84f85b2821f2350c2/dotnet-runtime-6.0.0-linux-x64.tar.gz"
