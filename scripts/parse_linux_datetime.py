@@ -1,7 +1,20 @@
+"""
+Script: Parse Linux Datetime
+Version: 0.2
+Author: Jack Atherton
+Synopsis: EXPERIMENTAL: Parses linux logs for timestamps and prints the matching lines to csv output.
+"""
+
 import os
 import re
 import pandas as pd
 from datetime import datetime
+
+# Script variables
+directory_current = os.getcwd()
+directory_toolkit = os.path.dirname(directory_current)
+default_input_directory = os.path.join(directory_toolkit, "_input", "linux")
+default_output_directory = os.path.join(directory_toolkit, "_output")
 
 def process_log_entry(timestamp_string, line, line_number, current_year, relative_path, channel):
     # Check if the log payload has been processed before
@@ -29,15 +42,10 @@ def process_log_entry(timestamp_string, line, line_number, current_year, relativ
             print(f"Processed timestamp {timestamp.strftime('%Y-%m-%d %H:%M:%S')} in file {relative_path} (Line {line_number})")
 
 if __name__ == "__main__":
-    # User-defined variables
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    parent_dir = os.path.dirname(script_dir)
-    log_directory = os.path.join(parent_dir, "_input", "linux")
-    output_directory = os.path.join(parent_dir, "_output")
 
     # Update the output_file variable to include the current datetime
     output_filename = datetime.now().strftime("%Y%m%d%H%M%S_linux-log-datetime.csv")
-    output_file = os.path.join(output_directory, output_filename)
+    output_file = os.path.join(default_output_directory, output_filename)
 
     current_year = datetime.now().year
     timestamps = []
@@ -48,12 +56,12 @@ if __name__ == "__main__":
                 r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})',
                 r'(\d{2}/\w{3}/\d{4}:\d{2}:\d{2}:\d{2})']
 
-    print(f"Searching for log files in {log_directory} and its subdirectories...")
+    print(f"Searching for log files in {default_input_directory} and its subdirectories...")
 
-    for root, _, files in os.walk(log_directory):
+    for root, _, files in os.walk(default_input_directory):
         for file in files:
             current_file = os.path.join(root, file)
-            relative_path = os.path.relpath(current_file, log_directory)
+            relative_path = os.path.relpath(current_file, default_input_directory)
             channel = os.path.splitext(file)[0].split('.')[0]
 
             try:
