@@ -1,6 +1,6 @@
 """
 Script: IPv4 Search
-Version: 1.2
+Version: 1.3
 Author: Jack Atherton
 Synopsis: Performs a search for IPv4 addresses in cleartext files and prints the matching lines to csv output.
 """
@@ -11,17 +11,20 @@ import re
 from datetime import datetime
 from ipaddress import ip_address
 
+# Script variables
+directory_current = os.getcwd()
+directory_toolkit = os.path.dirname(directory_current)
+default_input_directory = os.path.join(directory_toolkit, "_input")
+default_output_directory = os.path.join(directory_toolkit, "_output")
+
 def ipv4_search(file_path, output_csv=None, include_private=True):
     try:
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        default_input_directory = os.path.join(script_dir, "_input")
-        default_output_directory = os.path.join(script_dir, "_output")
-
         if output_csv:
-            output_csv = os.path.join(default_output_directory, output_csv)
-            with open(output_csv, 'w', newline='', encoding='utf-8') as csv_file:
+            mode = 'a' if os.path.exists(output_csv) else 'w'
+            with open(output_csv, mode, newline='', encoding='utf-8') as csv_file:
                 csv_writer = csv.writer(csv_file)
-                csv_writer.writerow(['File', 'Line Number', 'IPv4 Address', 'Original Line'])  # Reversed columns
+                if mode == 'w':
+                    csv_writer.writerow(['source_file', 'source_row_number', 'matched_ipv4', 'source_data'])
 
         with open(file_path, 'r', encoding='utf-8') as file:
             for line_number, line in enumerate(file, start=1):
@@ -34,16 +37,11 @@ def ipv4_search(file_path, output_csv=None, include_private=True):
                         if output_csv:
                             with open(output_csv, 'a', newline='', encoding='utf-8') as csv_file:
                                 csv_writer = csv.writer(csv_file)
-                                csv_writer.writerow([file_path, line_number, ipv4_address, line.strip()])  # Reversed columns
+                                csv_writer.writerow([file_path, line_number, ipv4_address, line.strip()])
     except Exception as e:
         print(f"An error occurred while processing {file_path}: {e}")
 
 if __name__ == "__main__":
-    # User inputs
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    default_input_directory = os.path.join(script_dir, "_input")
-    default_output_directory = os.path.join(script_dir, "_output")
-
     accept_default = input(f'Would you like to accept the default directory? (Default directory is: {default_input_directory}) (Y/N): ')
     if accept_default.lower() == 'n':
         path = input('Please enter the file or directory path to search: ')
@@ -51,7 +49,6 @@ if __name__ == "__main__":
         path = default_input_directory
     include_private = input('Include private IPv4 addresses (RFC1918)? (Y/N): ').lower() == 'y'
 
-    # CSV Output Variables
     current_datetime = datetime.now().strftime("%Y%m%d%H%M%S")
     default_output_csv = os.path.join(default_output_directory, f"{current_datetime}_ipv4_addresses.csv")
     output_csv = input(f'Enter the CSV file name to save results (Default: {default_output_csv}) (press Enter to skip): ') or default_output_csv
