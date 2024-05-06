@@ -52,12 +52,8 @@ rm -r "$toolkit_dir/tmp/bstrings/"
 
 # Download dotnet runtime
 curl -o "$toolkit_dir/tmp/dotnet-runtime-6.0.0-linux-x64.tar.gz" "https://download.visualstudio.microsoft.com/download/pr/0ce1c34f-0d9e-4d9b-964e-da676c8e605a/7a6c353b36477fa84f85b2821f2350c2/dotnet-runtime-6.0.0-linux-x64.tar.gz"
-
-# Check the integrity of dotnet-runtime-6.0.0-linux-x64.tar.gz
 dotnet_expected_hash="1a4076139944f3b16d9a0fc4841190cf060a9d93ebc13330821a2e97f6d4db91"
 check_hash "$toolkit_dir/tmp/dotnet-runtime-6.0.0-linux-x64.tar.gz" "$dotnet_expected_hash"
-
-# Extract dotnet runtime
 tar -xzvf "$toolkit_dir/tmp/dotnet-runtime-6.0.0-linux-x64.tar.gz" -C "$toolkit_dir/bin/dotnet-runtime-600/"
 
 # Install Python modules
