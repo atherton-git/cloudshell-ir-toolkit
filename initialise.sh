@@ -61,5 +61,9 @@ yes | pip install pandas
 yes | pip install pyboof
 yes | pip install numpy
 yes | pip install pyarrow
+yes | pip install python-docx
+yes | pip install python-pptx
+yes | pip installl openpyxl
+yes | pip install PyPDF2
 
 echo "Setup has completed."
