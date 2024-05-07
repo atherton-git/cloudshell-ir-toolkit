@@ -49,6 +49,10 @@ def search_wordlist():
     os.system(script_path)
     print("bstrings input searched for wordlist successfully. Please see '_output' directory for results.")
 
+def search_regex():
+    script_path = os.path.join(os.path.dirname(__file__), "scripts", "search_regex.py")
+    run_command(["python", script_path], "RegEx list searched successfully.")
+
 def parse_linux_log_timestamps():
     script_path = os.path.join(os.path.dirname(__file__), "scripts", "parse_linux_datetime.py")
     run_command(["python", script_path], "Linux log timestamps parsed successfully.")
@@ -79,10 +83,11 @@ def main():
 		print("1) Quit")
 		print("2) Log Parsing: Windows Events (EvtxECmd)")
 		print("3) Log Parsing: Linux Timestamps")
-		print("4) Search: bstrings wordlist")
-		print("5) Search: Free-text")
-		print("6) Search: IPv4")
-		print("7) Decode: QR codes")
+		print("4) Search: bstrings wordlist (input_bstrings.txt)")
+		print("5) Search: RegEx list (input_regex.txt)")
+		print("6) Search: Free-text")
+		print("7) Search: IPv4")
+		print("8) Decode: QR codes")
 
 		choice = input("Enter your choice: ")
 
@@ -95,10 +100,12 @@ def main():
 		elif choice == '4':
 			search_wordlist()
 		elif choice == '5':
-			search_freetext()
+			search_regex()
 		elif choice == '6':
-			search_ipv4()
+			search_freetext()
 		elif choice == '7':
+			search_ipv4()
+		elif choice == '8':
 			decode_qrcodes()
 		else:
 			print("Invalid choice. Please enter a valid option.")
