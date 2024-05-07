@@ -83,7 +83,7 @@ def main():
 		print("1) Quit")
 		print("2) Log Parsing: Windows Events (EvtxECmd)")
 		print("3) Log Parsing: Linux Timestamps")
-		print("4) Search: bstrings wordlist (input_bstrings.txt)")
+		print("4) Search: bstrings wordlist (input_wordlist.txt)")
 		print("5) Search: RegEx list (input_regex.txt)")
 		print("6) Search: Free-text")
 		print("7) Search: IPv4")
