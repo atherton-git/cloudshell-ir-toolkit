@@ -57,13 +57,13 @@ check_hash "$toolkit_dir/tmp/dotnet-runtime-6.0.0-linux-x64.tar.gz" "$dotnet_exp
 tar -xzvf "$toolkit_dir/tmp/dotnet-runtime-6.0.0-linux-x64.tar.gz" -C "$toolkit_dir/bin/dotnet-runtime-600/"
 
 # Install Python modules
-yes | pip install pandas
-yes | pip install pyboof
-yes | pip install numpy
-yes | pip install pyarrow
-yes | pip install python-docx
-yes | pip install python-pptx
-yes | pip installl openpyxl
-yes | pip install PyPDF2
+pip install pandas
+pip install pyboof
+pip install numpy
+pip install pyarrow
+pip install python-docx
+pip install python-pptx
+pip install openpyxl
+pip install PyPDF2
 
 echo "Setup has completed."
