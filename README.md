@@ -7,7 +7,7 @@
 \___/_/\____/\__,_/\__,_/____/_/ /_/\___/_/_/     /_/_/         \__/\____/\____/_/_/|_/_/\__/
 ```
 # Installation
-##Cloud Shell
+## Cloud Shell
 This toolkit can be installed to any Azure Cloud Shell instance by running the following command from within a Cloud Shell instance:
 
 ```
@@ -15,10 +15,10 @@ git clone https://github.com/atherton-git/cloudshell-ir-toolkit.git /usr/csuser/
 ```
 To launch the toolkit, type ```python ./launch.py``` from the directory ```/usr/csuser/clouddrive/cloudshell-ir-toolkit/```.
 
-##Windows
+## Windows
 This toolkit can be installed to Windows by downloading the reposiitory as a zip file, and executing the ```initialise.ps1``` script.
 
-##Ubuntu
+## Ubuntu
 The following command must be executed prior to installation on an Ubuntu VM:
 ```
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install unzip -y && sudo apt install python-is-python3 -y && sudo apt install python3-pip -y && sudo apt install default-jre -y
@@ -50,7 +50,7 @@ To launch the toolkit, type ```python ./launch.py``` from the installation direc
     5. Click ```Show Script```.
     6. Copy this script and execute it with ```Windows Powershell ISE```.
 
-###<ins>Mounting Storage to Ubuntu</ins>
+### <ins>Mounting Storage to Ubuntu</ins>
 - To make the transfer of files to and from the storage account more accessible, consider mounting as an SMB share in Ubuntu.
 - To to this:
     1. Browse to your storage account in Azure Portal.
@@ -72,7 +72,7 @@ To launch the toolkit, type ```python ./launch.py``` from the installation direc
 
 #Tools
 
-###<ins>Log Parsing: Windows Events (EvtxECmd)</ins>
+### <ins>Log Parsing: Windows Events (EvtxECmd)</ins>
 - This tool utilises EvtxExplorer to parse Windows Event Log files (.evtx), and output to a csv file.
 - The CSV export format in EvtxECmd normalizes the event record into standard fields from the common area of the XML payload, such as Computer, Channel, EventID, Level, TimeCreated.
 - The native XML data structure of Windows Events Logs can lead to analytical issues, because different event ID's can have different payloads.
@@ -84,29 +84,29 @@ To launch the toolkit, type ```python ./launch.py``` from the installation direc
 - Map files are then used to convert the EventData (unique part of an event ID) to a more standardised format.
 - This allows you to see all events in line with all other events, regardless of where the logs came from and what the payload is.
 
-####Usage
+#### Usage
 1. Copy Windows Event Log files to ```/{toolkit_directory}/_input/win/```.
 2. Choose the relevant option from the cloudshell-ir-toolkit menu.
 3. Once processed, collect the output from ```/{toolkit_directory}/_output/```.
 
-###<ins>Log Parsing: Linux Timestamps</ins>
+### <ins>Log Parsing: Linux Timestamps</ins>
 - Custom Python code used to parse Linux logs and translate their timestamp to a universally readable format.
 - Processed logs are output to csv.
 
-####Usage
+#### Usage
 1. Copy Linux logs to ```/{toolkit_directory}/_input/linux/```.
 2. Choose the relevant option from the cloudshell-ir-toolkit menu.
 3. Once processed, collect the output from ```/{toolkit_directory}/_output/```.
 
-###<ins>Convert: Documents to txt</ins>
+### <ins>Convert: Documents to txt</ins>
 - This tool leverages Apache Tika to convert various filetypes to plaintext (.txt) which reside in ```/{toolkit_directory}/_input/```.
 - **Note:** This process removes the original file, so if partially destructive. Ensure you have a copy of the data.
 
-####Usage
+#### Usage
 1. Choose the relevant option from the cloudshell-ir-toolkit menu.
 2. Document files (currently pdf, docx, xlsx, pptx, msg) within the ```/_input/``` directory will be converted to txt in place.
 
-###<ins>Search: Wordlist</ins>
+### <ins>Search: Wordlist</ins>
 - Custom Python code used to search cleartext files for strings that are specified in ```/{toolkit_directory}/input_wordlist.txt```.
 - Matches are exported to csv with the following column headers:
     - **search_query** (The specific string that has been matched)
@@ -114,7 +114,7 @@ To launch the toolkit, type ```python ./launch.py``` from the installation direc
     - **source_row_number** (Identifies the line on which the string was identified, in case a manual review is required)
     - **source_data** (A full copy of the data on the corrosponding line)
 
-####Usage
+#### Usage
 1. Copy cleartext source files to any directory within ```/{toolkit_directory}/_input/```.
 2. Choose the relevant option from the cloudshell-ir-toolkit menu.
 3. Once processed, collect the output from ```/{toolkit_directory}/_output/```.
@@ -129,27 +129,27 @@ To launch the toolkit, type ```python ./launch.py``` from the installation direc
     - **source_row_number** (Identifies the line on which the string was identified, in case a manual review is required)
     - **source_data** (A full copy of the data on the corrosponding line)
 
-####Usage
+#### Usage
 1. Copy cleartext source files to any directory within ```/{toolkit_directory}/_input/```.
 2. Choose the relevant option from the cloudshell-ir-toolkit menu.
 3. Once processed, collect the output from ```/{toolkit_directory}/_output/```.
 4. The filename will contain a timestamp, and end with the suffix "_regex".
 
-###<ins>Search: Free-text</ins>
+### <ins>Search: Free-text</ins>
 - Custom Python code used to search cleartext files for strings that are specified by the user.
 - Matches are exported to csv with the following column headers:
     - **source_file** (Source filename)
     - **source_row** (Identifies the line on which the string was identified in case a manual review is required)
     - **source_data** (A full copy of the data on the corrosponding line)
 
-####Usage
+#### Usage
 1. Copy cleartext source files to any directory within ```/{toolkit_directory}/_input/```.
 2. Choose the relevant option from the cloudshell-ir-toolkit menu.
 3. Follow on-screen prompts, and provide string to be searched.
 4. Once processed, collect the output from ```/{toolkit_directory}/_output/```.
 5. The filename will contain a timestamp, and end with the suffix "_freetext".
 
-###<ins>Search: IPv4</ins>
+### <ins>Search: IPv4</ins>
 - Custom Python code used to search cleartext files for IPv4 addresses.
 - Can be set to include or exclude private IP addresses (RFC1918).
 - Matches are exported to csv with the following column headers:
@@ -158,18 +158,18 @@ To launch the toolkit, type ```python ./launch.py``` from the installation direc
     - **matched_ipv4** (The address identified in the search)
     - **source_data** (A full copy of the data on the corrosponding line)
 
-####Usage
+#### Usage
 1. Copy cleartext source files to any directory within ```/{toolkit_directory}/_input/```.
 2. Choose the relevant option from the cloudshell-ir-toolkit menu.
 3. Follow on-screen prompts.
 4. Once processed, collect the output from ```/{toolkit_directory}/_output/```.
 5. The filename will contain a timestamp, and end with the suffix "_ipv4_addresses"
 
-###<ins>Decode: QR codes</ins>
+### <ins>Decode: QR codes</ins>
 - Uses a library called PyBoof to analyse image files that contain QR Codes.
 - The payload of the QR code is printed to console. (E.g. Phishing URL's).
 
-####Usage
+#### Usage
 1. Copy QR codes (in .png, .jpg, or .jpeg format) to ```/{toolkit_directory}/_input/qrcodes/```
 2. Choose the relevant option from the cloudshell-ir-toolkit menu.
 3. Results will be printed to the active shell/terminal
