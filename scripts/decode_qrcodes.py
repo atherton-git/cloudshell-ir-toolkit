@@ -1,6 +1,11 @@
 import os
+import re
 import numpy as np
 import pyboof as pb
+
+# Function to replace 't' with 'x' only in the matched part of the URL
+def sanitize_url(match):
+    return match.group().replace('t', 'x')
 
 # Function to process a single image and detect QR codes
 def process_image(image_path):
@@ -10,9 +15,13 @@ def process_image(image_path):
 
     print("Detected a total of {} QR Codes in {}:".format(len(detector.detections), image_path))
     
+    url_pattern = re.compile(r'https?://[^\s]+')
+
     for qr in detector.detections:
-        print(qr.message)
-      # print("     at: " + str(qr.bounds))
+        sanitized_message = qr.message
+        sanitized_message = url_pattern.sub(sanitize_url, sanitized_message)
+        print(sanitized_message)
+        # print("     at: " + str(qr.bounds))
 
 if __name__ == "__main__":
     # Directory path containing the QR code images
