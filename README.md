@@ -18,6 +18,8 @@ To launch the toolkit, type ```python ./launch.py``` from the directory ```/usr/
 ## Windows
 This toolkit can be installed to Windows by downloading the reposiitory as a zip file, and executing the ```initialise.ps1``` script.
 
+To launch the toolkit, double-click ```launch.py``` from the installation directory.
+
 ## Ubuntu
 The following command must be executed prior to installation on an Ubuntu VM:
 ```
