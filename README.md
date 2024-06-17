@@ -120,7 +120,7 @@ To launch the toolkit, type ```python ./launch.py``` from the installation direc
 3. Once processed, collect the output from ```/{toolkit_directory}/_output/```.
 4. The filename will contain a timestamp, and end with the suffix "_wordlist".
 
-###<ins>Search: RegEx list</ins>
+### <ins>Search: RegEx list</ins>
 - Custom Python code used to search cleartext files for strings that are specified in ```/{toolkit_directory}/input_regex.txt```.
 - Matches are exported to csv with the following column headers:
     - **regex_pattern** (The specific regex that has been matched)
