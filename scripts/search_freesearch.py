@@ -1,10 +1,3 @@
-"""
-Script: Freesearch
-Version: 1.3
-Author: Jack Atherton
-Synopsis: Performs a freetext search cleartext files and prints the matching lines to csv output.
-"""
-
 import os
 import csv
 from datetime import datetime
