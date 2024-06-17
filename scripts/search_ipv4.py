@@ -1,10 +1,3 @@
-"""
-Script: IPv4 Search
-Version: 1.3
-Author: Jack Atherton
-Synopsis: Performs a search for IPv4 addresses in cleartext files and prints the matching lines to csv output.
-"""
-
 import os
 import csv
 import re
