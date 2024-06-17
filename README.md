@@ -167,7 +167,7 @@ To launch the toolkit, type ```python ./launch.py``` from the installation direc
 4. Once processed, collect the output from ```/{toolkit_directory}/_output/```.
 5. The filename will contain a timestamp, and end with the suffix "_ipv4_addresses"
 
-### <ins>Decode: QR codes</ins>
+### <ins>Decode: QR codes (Linux only)</ins>
 - Uses a library called PyBoof to analyse image files that contain QR Codes.
 - The payload of the QR code is printed to console. (E.g. Phishing URL's).
 
