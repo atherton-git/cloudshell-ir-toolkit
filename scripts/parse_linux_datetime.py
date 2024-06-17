@@ -1,9 +1,4 @@
-"""
-Script: Parse Linux Datetime
-Version: 0.2
-Author: Jack Atherton
-Synopsis: EXPERIMENTAL: Parses linux logs for timestamps and prints the matching lines to csv output.
-"""
+# Experimental script
 
 import os
 import re
