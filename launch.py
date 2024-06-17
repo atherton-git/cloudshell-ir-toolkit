@@ -89,7 +89,7 @@ def main():
 		print("6) Search: RegEx list (input_regex.txt)")
 		print("7) Search: Free-text")
 		print("8) Search: IPv4")
-		print("9) Decode: QR codes")
+		print("9) Decode: QR codes (Linux only)")
 
 		choice = input("Enter your choice: ")
 
